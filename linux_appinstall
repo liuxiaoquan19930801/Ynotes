@@ -1,0 +1,8 @@
+更新软件源
+	sudo apt-get update
+
+软件安装
+	1.deb类型
+	sudo dpkg -i xxxxx.deb
+	2.tar.gz类型
+    tar -zxvf xxxxx.tar.gz

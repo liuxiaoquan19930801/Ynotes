@@ -1,0 +1,32 @@
+安装linux版JDK
+1.材料
+1)以jdk-8u131-linux-x64.tar.gz为例，该压缩包为官网下载所得
+2)linux64位系统，以Ubuntu 16.04为例
+
+步骤
+1)创建JDK安装目录
+	sudo mkdir /usr/java
+2)解压文件到目录
+	sudo tar zxvf jdk-8u131-linux-x64.tar.gz -C /usr/java/
+3)修改jdk-8u131-linux-x64为jdk1.8，便于配置环境变量
+    sudo mv jdk-8u90-linux-x64 jdk1.8
+4)配置环境变量
+    a)配置系统环境变量
+        sudo gedit /etc/environment
+        PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$JAVA_HOME/bin"
+        export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+        export JAVA_HOME=/usr/java/jdk1.8
+        export JRE_HOME=${JAVA_HOME}/jre
+    b)配置所有用户环境变量
+        sudo gedit /etc/profile
+        #set Java environment
+        JAVA_HOME=/usr/java/jdk1.8
+        export JRE_HOME=/usr/java/jdk1.8/jre
+        export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+        export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+5)设置默认jdk
+        sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/jdk1.8/bin/java" 300
+        sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/jdk1.8/bin/javac" 300
+        sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/java/jdk1.8/bin/javaws" 300
+6)检验
+    java -version
