@@ -1,0 +1,26 @@
+整理git库中的资源
+    git init
+    git add README.md
+    git commit -m "first commit"
+
+与远程github库进行绑定，可查看./git/config文件<前提是github上库exist>
+    git remote add origin git@github.com:liuxiaoquan19930801/Ynotes.git
+
+推送本地git库内容到远程库上
+    git push -u origin master
+
+
+分支部分：
+1.查看分支
+    git branch
+创建分支
+    git branch <name>
+查看所有分支
+    git branch -a
+查看远程分支
+    git branch -r
+
+2.切换分支
+    git checkout
+创建并切换远程分支
+    git chechout -b <name> origin/xxx
