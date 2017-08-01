@@ -1,0 +1,14 @@
+mybatis增删查改
+    1)获取SqlSession SqlSessionFactoryBuilder -> SqlSessionFactory -> SqlSession
+    2)xml配置sql  
+    3)sqlSession.selectOne|selectList|insert|delete|update
+
+配置sql：
+    1)根据操作选择标签 <select>|<update>|<delete>|<insert>
+    2)传入参数类型parameterType
+    3)返回结果类型resultType
+
+SqlSession方法调用：
+    第一个参数是sql的id，如namespace.sql_id
+    第二个参数是传入的参数。
+    
