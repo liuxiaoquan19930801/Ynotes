@@ -1,0 +1,33 @@
+properties
+    mybatis按照下面顺序加载属性：
+    1)在properties元素体内定义的属性首先被读取；
+    2)然后读取properties元素中resource或url加载的属性，它会覆盖已读取的属性。
+    3)最后读取parameterType传递的属性，它会覆盖已读取的同名属性。
+建议：
+    不要在properties元素体内添加任何属性值，只将属性值定义在properties文件中。
+
+
+typeAliases 别名
+    在mapper.xml文件中，有很多statement需要parameterType指定输入参数类型，resultType指定输出类型。
+    若使用全路径则不编开发，可以针对其定义一些别名，在mapper.xml中通过别名定义。
+    <typeAlias type="xxx.xx.x" alias="yy">
+    批量别名，以包扫描：<package name="xxxx.xxx.xx"/>，批量定义更常用。
+    别名首字母大小写都可以。
+
+
+
+XML 映射配置文件
+    MyBatis 的配置文件包含了影响 MyBatis 行为甚深的设置（settings）和属性（properties）信息。文档的顶层结构如下：
+        configuration 配置
+        properties 属性
+        settings 设置
+        typeAliases 类型命名
+        typeHandlers 类型处理器
+        objectFactory 对象工厂
+        plugins 插件
+        environments 环境
+        environment 环境变量
+        transactionManager 事务管理器
+        dataSource 数据源
+        databaseIdProvider 数据库厂商标识
+        mappers 映射器

@@ -1,3 +1,8 @@
 SqlSessionFactory 采用单例模式，一次创建多次使用。
 SqlSeesion 面向用户的接口，提供了众多操作数据库的方法。   线程不安全。
 
+
+原始Dao开发存在的问题：
+    1)dao接口中存在大量模板方法。
+    2)调用sqlsession方法时将statement的id硬编码了。
+    3)调用sqlsession方法传入变量参数时，因sqlsession接口使用的是泛型，所以在变量类型传入错误时，编译阶段也不会报错，不利于开发。

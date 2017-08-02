@@ -1,0 +1,19 @@
+开发规范：
+    1)在mapper.xml中namespace等于mapper接口地址。
+    2)mapper.java接口中的方法名和mapper.xml中的statement的id一致。
+    3)mapper.java接口中的方法输入参数类型和mapper.xml中statement的parameterType指定的类型一致。
+    4)mapper.java接口中的方法返回值类型和mapper.xml中statement的resultType指定的类型一致。
+即：      mapper 接口中的 public User findUserById(int id);
+等价于 mapper.xml的namespace的  resultType  statement(parameterType)
+
+
+代理对象内部调用selectOne或selectList
+    若mapper方法返回值为单个pojo对象，代理对象内部通过selectOne查询数据库。
+    若mapper方法返回集合对象，代理对象内部通过selectList查询数据库。
+
+
+加载mapper.xml文件：
+    通过resource方法加载：<mapper resource="xx" />
+    通过mapper接口加载映射文件：<mapper class="xxx.xx.x" /> (此方法只适用于mapper代理方法)
+        规范：需要将mapper接口的类名和mapper.xml映射文件名称保持一致，且两个处于同一个目录。
+*也可以通过mapper接口批量加载加载mapper。
