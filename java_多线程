@@ -12,7 +12,57 @@
     Java 提供了三种创建线程的方法：
     通过实现 Runnable 接口；
     通过继承 Thread 类本身；
-    通过 Callable 和 Future 创建线程。
+    通过 Callable 和 Future 创建线程（有返回值的线程）。
+通过Callable和Future创建线程：
+    1)创建Callable接口的实现类A，并实现call()方法(call方法作为线程体，且有返回值)。
+    2)创建A的实例，使用FutureTask类对象包装Callable对象。
+    3)创建Thread线程，使用FutureTask对象作为线程的Target参数,并启动。
+    4)调用FutureTask对象的get()方法来获取子线程执行结束后的返回值。
+
+
+三种方式对比：
+    1.采用Runnable、Callable接口方式实现时，只是实现接口，还可以继承其他类。
+    2.使用继承Thread方式创建多线程时，编写简单，访问当前线程时无需使用Thread.currentThread()方法，直接使用this即可。
+
+
+主要概念：
+    1.线程同步
+    2.线程间通信
+    3.线程死锁
+    4.线程控制：挂起、停止和恢复
+
+多线程并不是越多越好，太多线程反而会导致程序执行效率降低，因为CPU花费在上下文切换的时间多于执行程序的时间。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
