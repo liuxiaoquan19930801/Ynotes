@@ -1,3 +1,43 @@
-进入mysql接口
+修改mysql的root密码
+    进入mysql接口
     方法一：mysql -uroot -p密码
     方法二：mysql -u root -p
+
+
+修改表名、列名、列类型、添加表列、删除表列：
+alter table tb rename tb1; --修改表名
+alter table tb add column col varchar(10); --添加表列
+alter table tb drop column col; --删除表列
+alter table tb modify col char(10); --修改表列类型
+或 alter table tb change col col char(20);
+alter table tb change column col col1 varchar(20);--修改表列名
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
