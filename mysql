@@ -13,11 +13,20 @@ alter table tb modify col char(10); --修改表列类型
 alter table tb change column col col1 varchar(20);--修改表列名
 
 
+事务隔离级别(transaction isolation[隔离])
+transaction-isolation:
+    READ-UNCOMMITTED(允许脏读，可读到其他会话中未提交事务修改的数据)
+    READ-COMMITTED(只能读已提交的数据，Oracle等多数据库默认是该级别，不重复 读)
+    REPEATABLE-READ(可重复读，mysql innoDB默认选项)
+    SERIALIZABLE(完全串行化的读，每次都需要获取表级共享锁，读写都会阻塞)
+
+不重复读与可重复读：
+    不重复读指A会话多次查询，期间B会话修改了数据，A因能查出B的修改而导致与之前的查询结果不重复。
+    可重复读指A会话多次查询，期间B修改了数据，A查到的结果仍和之前的一样，当A进行一次COMMIT提交后才会查到B修改的数据。(不重复读级别在A不提交时也能查到)
+mysql默认可重复读的情况下，使用普通读时，会得到一致性结果。 如果使用了加锁的读，就会读到“最新的”“提交读”的结果。mysql innoDB并不保证避免幻读，需要应用使用加锁读来保证。而这个加锁读使用到的机制就是next-key locks。
 
 
-
-
-
+本很可重复读和提交读是矛盾的。在同一个事务里，如果保证了可重复读，就看不到其他事务的提交，违背了提交读。如果保证了提交读，就会导致前后读取的结果不一致，违背了可重复读。
 
 
 
