@@ -1,0 +1,11 @@
+1.前端控制器DispatcherServlet
+该类中的数据成员全都是静态常量，即static final类型的，所以不会影响到线程安全。
+认为DispatcherServlet是线程安全的，但是SpringMVC中的controller不是。
+Controller也是单例的，每个请求对应一个Controller中的方法，方法如果没有使用实例变量，可以认为是线程安全的，如果有就需要考虑线程安全的问题了。
+
+2.Spring的IOC容器默认管理的bean都是单实例的。
+Struts1的action也是单实例的，使用的时候会有线程安全问题。
+Struts2的action会对每个请求产生一个实例，所以不存在线程安全问题。
+
+
+
